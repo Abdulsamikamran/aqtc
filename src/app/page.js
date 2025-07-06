@@ -50,13 +50,7 @@ export default function Home() {
 
       <Header
         items={items}
-        particleCount={7}
-        particleDistances={[70, 10]}
-        particleR={100}
-        initialActiveIndex={0}
-        animationTime={500}
-        timeVariance={300}
-        colors={colors}
+      
       />
 
       <section className="relative h-[800px] w-full overflow-hidden">
