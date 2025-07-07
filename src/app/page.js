@@ -7,6 +7,7 @@ import ShinyText from "./components/ shinyText";
 import Magnet from "./components/magnet";
 import SpotlightCard from "./components/card";
 import TiltedCard from "./components/card";
+import AnimatedText from "./components/animatedText";
 
 export default function Home() {
   const items = [
@@ -22,7 +23,7 @@ export default function Home() {
 
   const colors = ["#066787", "#ffffff", "#0e98cd"];
   return (
-    <div>
+    <div className="w-full">
       <Head>
         <title>Tax Experts - Professional Tax Consultancy Services</title>
         <meta
@@ -47,13 +48,11 @@ export default function Home() {
         <meta property="og:image" content="/tax-banner.jpg" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <div className="">
+        <Header items={items} />
+      </div>
 
-      <Header
-        items={items}
-      
-      />
-
-      <section className="relative h-[800px] w-full overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden">
         <video
           src="/video.mp4"
           autoPlay
@@ -64,29 +63,16 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
 
-        <div className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-6 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl leading-14 font-bold mb-4">
-            Expert Tax Solutions <br /> for Individuals & Businesses
+        <div className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-6 max-w-7xl mx-auto">
+          <h1 className="text-4xl md:text-5xl  flex items-center leading-14 font-bold mb-4">
+            Expert Tax Solutions for
+            <AnimatedText />
           </h1>
           <p className="text-lg md:text-xl mb-6">
             We help you reduce your tax burden, stay compliant, and plan your
             financial future with confidence.
           </p>
 
-          {/* <ul className="mb-6 space-y-2 text-base md:text-lg text-left max-w-md mx-auto">
-            <li className="flex items-center gap-2">
-              <span className="text-green-400">✔</span> Personalized tax
-              strategies
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-green-400">✔</span> Expert support for
-              audits & filings
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-green-400">✔</span> Transparent, fixed
-              pricing
-            </li>
-          </ul> */}
           <Magnet padding={300} disabled={false} magnetStrength={2}>
             <a
               href="#contact"
