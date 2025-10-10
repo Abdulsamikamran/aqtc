@@ -28,13 +28,13 @@ const AnimatedText = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-    }, 1000); // Change word every 2 seconds
+    }, 2000); // Change word every 2 seconds
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <h2 className="text-2xl md:text-5xl font-semibold mr-28 text-white">
-      <span className="inline-block mb-10 ml-2  min-w-[150px] text-white relative">
+    <div className="text-2xl md:text-5xl font-semibold mr-28 text-white">
+      <span className="inline-block mb-10 ml-2  min-w-[150px] text-[#0e98cd] relative">
         <AnimatePresence mode="wait">
           <motion.span
             key={words[index]}
@@ -49,7 +49,7 @@ const AnimatedText = () => {
           </motion.span>
         </AnimatePresence>
       </span>
-    </h2>
+    </div>
   );
 };
 

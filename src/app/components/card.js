@@ -56,7 +56,7 @@ export default function TiltedCard({
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className="rounded-xl p-6 w-full h-full bg-[#0e98cd]/20 border border-[#066787] shadow-xl "
+        className="rounded-xl p-6 w-[300px] h-full bg-[#066787] border border-[#066787] shadow-xl "
         style={{
           rotateX,
           rotateY,
@@ -64,10 +64,10 @@ export default function TiltedCard({
           transformStyle: "preserve-3d",
         }}
       >
-        <h4 className="text-[20px] font-semibold mb-2 text-black">
+        <h4 className="text-[20px] font-semibold mb-2 text-white">
           {captionText}
         </h4>
-        <p className="text-lg text-black/80">{descriptionText}</p>
+        <p className="text-lg text-white">{descriptionText}</p>
       </motion.div>
     </figure>
   );

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+
+body {
+  background-color: #f8faff; /* subtle light blueish background */
+  color: #000; /* or #333 for softer text */
+  font-family: 'Inter', sans-serif; /* example professional font */
+}
 html {
   scroll-behavior: smooth;
 }
@@ -36,57 +42,113 @@ html {
 .shiny-text.disabled {
   animation: none;
 }
-/* From Uiverse.io by adamgiebl */ 
-.nav {
-  border: none;
-  display: block;
-  position: relative;
-  padding: 10px 8px;
-  font-size: 14px;
-  background: transparent;
+/* From Uiverse.io by doniaskima */ 
+.btn-23,
+.btn-23 *,
+.btn-23 :after,
+.btn-23 :before,
+.btn-23:after,
+.btn-23:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-23 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #0e98cd;
+  background-image: none;
+  color: #fff;
   cursor: pointer;
-  user-select: none;
-  overflow: hidden;
-  color: #066787;
-  z-index: 1;
-  font-family: inherit;
-  font-weight: 500;
-  border-radius: 4px;
-  text-align: center;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 10px 0;
+  text-transform: uppercase;
+  max-width: 200px;
 }
 
-.nav span {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: -1;
-  border-radius: 8px;
+.btn-23:disabled {
+  cursor: default;
 }
 
-.nav span::before {
-  content: "";
+.btn-23:-moz-focusring {
+  outline: auto;
+}
+
+.btn-23 svg {
   display: block;
+  vertical-align: middle;
+}
+
+.btn-23 [hidden] {
+  display: none;
+}
+
+.btn-23 {
+  border-radius: 99rem;
+
+  overflow: hidden;
+  padding: 0.8rem 3rem;
+  position: relative;
+}
+
+.btn-23 span {
+  display: grid;
+  inset: 0;
+  place-items: center;
   position: absolute;
-  width: 8%;
-  height: 500%;
-  background: var(--lightgray);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-60deg);
-  transition: all 1s;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
-.nav:hover span::before,
-.nav.active span::before {
-  transform: translate(-50%, -50%) rotate(-90deg);
-  width: 100%;
-  background: #066787;
+.btn-23 .marquee {
+  --spacing: 21em;
+  --start: 0em;
+  --end: 21em;
+  -webkit-animation: marquee 2s linear infinite;
+  animation: marquee 2s linear infinite;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  opacity: 0;
+  white-space: nowrap;
+  position: relative;
+  text-shadow: #fff var(--spacing) 0, #fff calc(var(--spacing) * -1) 0,
+    #fff calc(var(--spacing) * -2) 0;
 }
 
-.nav:hover,
-.nav.active {
-  color: white;
+.btn-23:hover .marquee {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+  opacity: 1;
 }
+
+.btn-23:hover .text {
+  opacity: 0;
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    transform: translateX(var(--end));
+  }
+  
+  to {
+    transform: translateX(var(--start));
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(var(--end));
+  }
+  
+  to {
+    transform: translateX(var(--start));
+  }
+}
+

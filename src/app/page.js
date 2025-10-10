@@ -3,11 +3,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import Header from "./components/header";
-import ShinyText from "./components/ shinyText";
-import Magnet from "./components/magnet";
-import SpotlightCard from "./components/card";
-import TiltedCard from "./components/card";
 import AnimatedText from "./components/animatedText";
+import TiltedCardReveal from "./components/services";
+import AboutSection from "./components/about";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const items = [
@@ -20,6 +19,19 @@ export default function Home() {
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
+  const textFadeVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
 
   const colors = ["#066787", "#ffffff", "#0e98cd"];
   return (
@@ -73,119 +85,62 @@ export default function Home() {
             financial future with confidence.
           </p>
 
-          <Magnet padding={300} disabled={false} magnetStrength={2}>
-            <a
-              href="#contact"
-              className="bg-custom2 hover:bg-red-500 font-semibold transition text-white px-6 py-3 rounded-lg font-medium"
-            >
-              Contact Us
-            </a>
-          </Magnet>
+          <button className="btn-23">
+            <span className="text">Contact us!</span>
+            <span aria-hidden="" className="marquee">
+              We do the math so you don’t have to.
+            </span>
+          </button>
         </div>
       </section>
 
-      <section id="services" className="py-16 bg-white  scroll-mt-24">
-        <div className="container mx-auto px-4">
-          <h3 className="text-3xl font-semibold mb-8 text-center">
-            Our Services
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Personal Income Tax",
-                desc: "We help individuals file accurate tax returns, maximize deductions, and stay compliant with local laws — ensuring peace of mind and optimal tax outcomes.",
-              },
-              {
-                title: "Business Tax Filing",
-                desc: "Whether you're running a small startup or managing a large enterprise, we handle your tax filings efficiently while ensuring full compliance with regulations.",
-              },
-              {
-                title: "Tax Planning",
-                desc: "Our strategic tax planning services help you legally reduce liabilities, structure income efficiently, and take advantage of available tax-saving opportunities.",
-              },
-              {
-                title: "VAT Consultancy",
-                desc: "From VAT registration and documentation to timely filing and compliance audits, we provide comprehensive support tailored to your business's VAT obligations.",
-              },
-              {
-                title: "Audit Assistance",
-                desc: "Facing a tax audit? Our experts offer professional representation, respond to authority queries, and manage documentation to protect your interests.",
-              },
-              {
-                title: "Financial Advisory",
-                desc: "We align your tax strategy with long-term financial goals — offering insights on investments, asset structuring, and fiscal planning for sustainable growth.",
-              },
-            ].map(({ title, desc }) => (
-              <TiltedCard
-                key={title}
-                captionText={title}
-                descriptionText={desc}
-                containerHeight="100%"
-                containerWidth="100%"
-                scaleOnHover={1.07}
-                rotateAmplitude={8}
-              />
-            ))}
-          </div>
-        </div>
+      <section id="services" className="py-16 bg-white  ">
+        <TiltedCardReveal />
       </section>
 
-      <section id="about" className="bg-gray-100 py-16 scroll-mt-24">
-        <div className="container mx-auto px-4 md:flex md:items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0">
-            <Image
-              src="/about-tax.jpg"
-              alt="About Tax Consultancy"
-              width={500}
-              height={350}
-              className="rounded-lg"
-            />
-          </div>
-          <div className="md:w-1/2 md:pl-12">
-            <h3 className="text-3xl font-semibold mb-4">About Tax Experts</h3>
-            <p className="mb-4">
-              With over 15 years of experience, we help individuals and
-              businesses stay compliant and save on taxes.
-            </p>
-            <p>
-              Our experts stay up-to-date with the latest tax laws and offer
-              personalized strategies based on your unique needs.
-            </p>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
-      <section id="why-us" className="py-16 bg-white scroll-mt-24">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-3xl font-semibold mb-6">
-            Why Choose Tax Experts?
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8 text-left">
-            <div>
-              <h4 className="font-bold text-xl mb-2">
-                Experienced Professionals
-              </h4>
-              <p>
-                Our certified consultants bring decades of industry knowledge
-                and a proven track record.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-2">Customized Solutions</h4>
-              <p>
-                We tailor services to your financial situation for optimal
-                results.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-2">Transparent Pricing</h4>
-              <p>
-                No hidden fees — only straightforward pricing you can trust.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section id="why-us" className="py-16 bg-white scroll-mt-24">
+  <div className="container mx-20 px-4">
+  
+    <div className="mb-12">
+      <motion.h3
+        className="text-[48px] md:text-[80px] lg:text-[120px] text-[#066787] leading-none font-semibold whitespace-nowrap"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={textFadeVariant}
+        custom={0}
+      >
+        Why Choose AQTC?
+      </motion.h3>
+    </div>
+
+ 
+    <div className="flex flex-col md:flex-row justify-center items-start gap-10 text-left">
+      <div className="max-w-sm text-center md:text-left">
+        <h4 className="font-bold text-xl mb-2">20+ Years of Expertise</h4>
+        <p>
+          Our certified consultants bring two decades of industry experience and trusted results.
+        </p>
+      </div>
+      <div className="max-w-sm text-center md:text-left">
+        <h4 className="font-bold text-xl mb-2">500+ Satisfied Clients</h4>
+        <p>
+          We've successfully guided hundreds of individuals and businesses to financial clarity.
+        </p>
+      </div>
+      <div className="max-w-sm text-center md:text-left">
+        <h4 className="font-bold text-xl mb-2">98% Client Retention Rate</h4>
+        <p>
+          Our transparent service and personalized support keep clients coming back year after year.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       <section id="team" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4 text-center">
